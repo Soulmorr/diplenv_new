@@ -1,6 +1,6 @@
 numpy
 scikit-learn
-opencv-python
+opencv-python==4.7.0.72
 pyttsx3
 mediapipe
 selenium
@@ -11,3 +11,4 @@ ffmpy
 matplotlib
 tk
 requests
+keras==3.6.0

@@ -4,15 +4,15 @@
 import numpy as np
 import os
 from sklearn.model_selection import train_test_split
-from tensorflow.keras.utils import to_categorical
+from keras.src.utils import to_categorical
 from itertools import product
 from sklearn import metrics
 
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense
+from keras.src.models import Sequential
+from keras.src.layers import LSTM, Dense
 
 # Set the path to the data directory
-PATH = os.path.join('data')
+PATH = os.path.join('./fourth_part/data')
 
 # Create an array of actions (signs) labels by listing the contents of the data directory
 actions = np.array(os.listdir(PATH))
@@ -56,7 +56,7 @@ model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categ
 model.fit(X_train, Y_train, epochs=100)
 
 # Save the trained model
-model.save('my_model')
+model.save('./fourth_part/my_model.h5')
 
 # Make predictions on the test set
 predictions = np.argmax(model.predict(X_test), axis=1)

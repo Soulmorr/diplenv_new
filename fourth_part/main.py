@@ -1,4 +1,3 @@
-# %%
 
 # Import necessary libraries
 import numpy as np
@@ -8,17 +7,17 @@ import mediapipe as mp
 import cv2
 from my_functions import *
 import keyboard
-from tensorflow.keras.models import load_model
+from keras.src.saving import load_model
 import language_tool_python
 
 # Set the path to the data directory
-PATH = os.path.join('data')
+PATH = os.path.join('.\\fourth_part\data')
 
 # Create an array of action labels by listing the contents of the data directory
 actions = np.array(os.listdir(PATH))
 
 # Load the trained model
-model = load_model('my_model')
+model = load_model('.\\fourth_part\my_model.h5')
 
 # Create an instance of the grammar correction tool
 tool = language_tool_python.LanguageToolPublicAPI('en-UK')
@@ -27,7 +26,7 @@ tool = language_tool_python.LanguageToolPublicAPI('en-UK')
 sentence, keypoints, last_prediction, grammar, grammar_result = [], [], [], [], []
 
 # Access the camera and check if the camera is opened successfully
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 if not cap.isOpened():
     print("Cannot access camera.")
     exit()

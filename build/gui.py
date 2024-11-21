@@ -4,6 +4,7 @@
 
 
 from pathlib import Path
+from pathlib import Path
 import tkinter as tk
 from tkinter import CENTER,LEFT,RIGHT,Text,INSERT
 import subprocess
@@ -12,25 +13,24 @@ from tkinter import messagebox
 from tkinter.messagebox import askyesno
 import tkinter.font as tkFont
 import time
-PyPath = '.\env\Scripts\python.exe'
 # from tkinter import *
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
-
+PyPath = '.\\.venv\Scripts\python.exe'
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path(r".\\assets\\frame0")
-def button1_click():
+def button5_click():
     answer = askyesno("Увага", "Якщо Ви вперше користуєтесь додатком рекомендуєм спочатику навчити програму під вас, Бажаєте виконати навчання?")
     if answer == True:
-        button2_click()
+        button7_click()
         time.sleep(60)
         subprocess.call([PyPath, '.\\first_part\gui.py'])
     elif answer == False:
         messagebox.showinfo("INFO","Для того щоб додати букву у речення натисніть Enter, щоб додати пропуск у речення натисність пробіл, щоб стерти останній символ, натисніть BackSpace, Esc для виходу")
         subprocess.call([PyPath, '.\\first_part\gui.py'])
         
-def button2_click():
+def button7_click():
     #root.withdraw()  # Приховати головне вікно
     msg=messagebox.askokcancel(title="Навчання моделі", message="Зараз відкриється вікно з вашим зображення, при натисканні вказаної кнопки, почнеться считування вашої руки протягом декількох секунд, змінюйте положення руки, ближче і дальше від камери, повторіть цей процес для кожної букви вказаної на зобреженні, считування йде алфавітному порядку!Щоб вийти натисніть декілька разів ESC")
     if msg == True:
@@ -38,8 +38,17 @@ def button2_click():
         
     else:
         window.update()
+def button9_click():
+    #root.withdraw()  # Приховати головне вікно
+    #msg=messagebox.askokcancel(title="Навчання моделі", message="Зараз відкриється вікно з вашим зображення, при натисканні вказаної кнопки, почнеться считування вашої руки протягом декількох секунд, змінюйте положення руки, ближче і дальше від камери, повторіть цей процес для кожної букви вказаної на зобреженні, считування йде алфавітному порядку!Щоб вийти натисніть декілька разів ESC")
    
-def button3_click():
+    subprocess.call([PyPath,'.\\fourth_part\\main.py'])
+def button8_click():
+    #root.withdraw()  # Приховати головне вікно
+    #msg=messagebox.askokcancel(title="Навчання моделі", message="Зараз відкриється вікно з вашим зображення, при натисканні вказаної кнопки, почнеться считування вашої руки протягом декількох секунд, змінюйте положення руки, ближче і дальше від камери, повторіть цей процес для кожної букви вказаної на зобреженні, считування йде алфавітному порядку!Щоб вийти натисніть декілька разів ESC")
+   
+    subprocess.call([PyPath,'.\\fourth_part\\game.py'])  
+def button6_click():
 
     subprocess.call([PyPath,'.\\seccond_part\\textToSign.py'])
     
@@ -76,51 +85,110 @@ def button4_click():
     label7= tk.Label(info,justify=LEFT,text="Після натискання кнопки відкриється меню програми,кнопка Показати відео покаже останнє змонтоване програмою відео, \nв полі тексту потрібно написати текст який ви хочете перекласти на мову жестів, ТЕКСТ МАЄ БУТИ АНГЛІЙСЬКОЮ МОВОЮ, \nПісля чого натиснути кнопку згенерувати відео, почнеться процес під час якого програма буде перевіряти чи є в неї в базі таке слово, \nякшо всі слова вона уже має, \nто вона змонтує відео і покаже його вам, після чого воно буде збережно у папку з програмою, якщо ж у програмі немає потрібного слова, \nпрограма відкриє вам сайт на тому слові якого немає у базі, на сторонці буде відео, Вам потрібного його завантажити, \nнаписнувши правою кнопкою миші по відео->Save as та вибрати загрузки, \nна це все вам буде дано 20 секунд, решту зробить програма")
     label7.place(x=20,y=370) 
 
+def button10_click():
+    info=tk.Tk()
+    info.title("Інструкція")
+    info.geometry("900x600")
+    label1= tk.Label(info,text="Інструкції")
+    fontExample = tkFont.Font(family="Arial", size=16, weight="bold", slant="italic")
+    label1.configure(font=fontExample)
+    label1.pack(pady=5)
+    
+    label2= tk.Label(info,text="Інструкція для використання 'Переклад мови жестів у текст.' із новою моделлю." )
+    fontExample = tkFont.Font(family="Arial", size=16, weight="bold", slant="italic")
+    label2.configure(font=fontExample)
+    label2.place(x=20,y=40)
+    
+    
+    label6= tk.Label(info,text="Інструкція для гри")
+    fontExample = tkFont.Font(family="Arial", size=16, weight="bold", slant="italic")
+    label6.configure(font=fontExample)
+    label6.place(x=20,y=340)
+    
+    label7= tk.Label(info,justify=LEFT,text="Після натискання кнопки відкриється меню програми,кнопка Показати відео покаже останнє змонтоване програмою відео, \nв полі тексту потрібно написати текст який ви хочете перекласти на мову жестів, ТЕКСТ МАЄ БУТИ АНГЛІЙСЬКОЮ МОВОЮ, \nПісля чого натиснути кнопку згенерувати відео, почнеться процес під час якого програма буде перевіряти чи є в неї в базі таке слово, \nякшо всі слова вона уже має, \nто вона змонтує відео і покаже його вам, після чого воно буде збережно у папку з програмою, якщо ж у програмі немає потрібного слова, \nпрограма відкриє вам сайт на тому слові якого немає у базі, на сторонці буде відео, Вам потрібного його завантажити, \nнаписнувши правою кнопкою миші по відео->Save as та вибрати загрузки, \nна це все вам буде дано 20 секунд, решту зробить програма")
+    label7.place(x=20,y=370)
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 
 window = Tk()
-window.title("Сурдоперекладач")
-window.geometry("529x343")
+
+window.geometry("1280x620")
 window.configure(bg = "#FFFFFF")
 
 
 canvas = Canvas(
     window,
     bg = "#FFFFFF",
-    height = 343,
-    width = 529,
+    height = 620,
+    width = 1280,
     bd = 0,
     highlightthickness = 0,
     relief = "ridge"
 )
 
 canvas.place(x = 0, y = 0)
-canvas.create_rectangle(
-    0.0,
-    0.0,
-    260.0,
-    364.0,
-    fill="#2A87DE",
-    outline="")
+image_image_1 = PhotoImage(
+    file=relative_to_assets("image_1.png"))
+image_1 = canvas.create_image(
+    640.0,
+    310.0,
+    image=image_image_1
+)
 
 canvas.create_text(
-    27.0,
-    31.0,
+    757.0,
+    28.0,
+    anchor="nw",
+    text="Виберіть бажаний вид перекладу",
+    fill="#2A87DE",
+    font=("Inter Bold", 24 * -1)
+)
+
+canvas.create_text(
+    837.0,
+    82.0,
+    anchor="nw",
+    text="Оновлене розпізнавання",
+    fill="#2A87DE",
+    font=("Inter Bold", 20 * -1)
+)
+
+canvas.create_text(
+    832.0,
+    299.0,
+    anchor="nw",
+    text="Початкове розпізнавання",
+    fill="#2A87DE",
+    font=("Inter Bold", 20 * -1)
+)
+
+canvas.create_text(
+    115.0,
+    22.0,
     anchor="nw",
     text="English Sign Language Translator",
     fill="#FFFFFF",
-    font=("Inter Bold", 15 * -1)
+    font=("Inter Bold", 24 * -1)
 )
 
-canvas.create_rectangle(
-    268.0,
-    0.0,
-    530.0,
-    364.0,
+canvas.create_text(
+    84.0,
+    117.0,
+    anchor="nw",
+    text="     Цей проект було розроблено у \nмежах моєї бакалаврської \nдипломної роботи та покращено в \nмежах магістерської дипломної \nроботи.",
     fill="#FFFFFF",
-    outline="")
+    font=("Inter", 24 * -1)
+)
+
+canvas.create_text(
+    92.0,
+    319.0,
+    anchor="nw",
+    text="    Додаток спрямований допомогти\nлюдям з вадами слуху взямодія із\nзовнішім світом.",
+    fill="#FFFFFF",
+    font=("Inter", 24 * -1)
+)
 
 button_image_1 = PhotoImage(
     file=relative_to_assets("button_1.png"))
@@ -128,14 +196,14 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=button2_click,
+    command=lambda: print("button_1 clicked"),
     relief="flat"
 )
 button_1.place(
-    x=308.0,
-    y=259.0,
-    width=189.0,
-    height=42.0
+    x=100.0,
+    y=65.0,
+    width=419.0,
+    height=10.0
 )
 
 button_image_2 = PhotoImage(
@@ -144,14 +212,14 @@ button_2 = Button(
     image=button_image_2,
     borderwidth=0,
     highlightthickness=0,
-    command=button3_click,
+    command=lambda: print("button_2 clicked"),
     relief="flat"
 )
 button_2.place(
-    x=308.0,
-    y=138.0,
-    width=189.0,
-    height=42.0
+    x=746.0,
+    y=67.0,
+    width=419.0,
+    height=10.0
 )
 
 button_image_3 = PhotoImage(
@@ -160,14 +228,14 @@ button_3 = Button(
     image=button_image_3,
     borderwidth=0,
     highlightthickness=0,
-    command=button4_click,
+    command=lambda: print("button_3 clicked"),
     relief="flat"
 )
 button_3.place(
-    x=60.0,
-    y=255.0,
-    width=137.0,
-    height=49.0
+    x=746.0,
+    y=284.0,
+    width=419.0,
+    height=10.0
 )
 
 button_image_4 = PhotoImage(
@@ -176,112 +244,110 @@ button_4 = Button(
     image=button_image_4,
     borderwidth=0,
     highlightthickness=0,
-    command=button1_click,
+    command=button4_click,
     relief="flat"
 )
 button_4.place(
-    x=308.0,
-    y=76.0,
-    width=189.0,
-    height=42.0
+    x=142.0,
+    y=475.0,
+    width=335.0,
+    height=77.0
 )
 
-canvas.create_rectangle(
-    53.0,
-    59.0,
-    215.0,
-    63.0,
-    fill="#FFFFFF",
-    outline="")
-
-canvas.create_text(
-    290.0,
-    33.0,
-    anchor="nw",
-    text="Виберіть потрібний вид перекладу",
-    fill="#2A87DE",
-    font=("bold", 14 * -1,)
+button_image_5 = PhotoImage(
+    file=relative_to_assets("button_5.png"))
+button_5 = Button(
+    image=button_image_5,
+    borderwidth=0,
+    highlightthickness=0,
+    command=button5_click,
+    relief="flat"
+)
+button_5.place(
+    x=784.0,
+    y=331.0,
+    width=335.0,
+    height=77.0
 )
 
-canvas.create_text(
-    27.0,
-    76.0,
-    anchor="nw",
-    text="Цей проект було",
-    fill="#FFFFFF",
-    font=("Inter Bold", 14 * -1)
+button_image_6 = PhotoImage(
+    file=relative_to_assets("button_6.png"))
+button_6 = Button(
+    image=button_image_6,
+    borderwidth=0,
+    highlightthickness=0,
+    command=button6_click,
+    relief="flat"
+)
+button_6.place(
+    x=784.0,
+    y=428.0,
+    width=335.0,
+    height=77.0
 )
 
-canvas.create_text(
-    27.0,
-    93.0,
-    anchor="nw",
-    text="розроблено у межах моєї",
-    fill="#FFFFFF",
-    font=("Inter Bold", 14 * -1)
+button_image_7 = PhotoImage(
+    file=relative_to_assets("button_7.png"))
+button_7 = Button(
+    image=button_image_7,
+    borderwidth=0,
+    highlightthickness=0,
+    command=button7_click,
+    relief="flat"
+)
+button_7.place(
+    x=784.0,
+    y=525.0,
+    width=335.0,
+    height=77.0
 )
 
-canvas.create_text(
-    27.0,
-    110.0,
-    anchor="nw",
-    text="дипломної роботи.",
-    fill="#FFFFFF",
-    font=("Inter Bold", 14 * -1)
+button_image_8 = PhotoImage(
+    file=relative_to_assets("button_8.png"))
+button_8 = Button(
+    image=button_image_8,
+    borderwidth=0,
+    highlightthickness=0,
+    command=button8_click,
+    relief="flat"
+)
+button_8.place(
+    x=990.0,
+    y=114.0,
+    width=258.0,
+    height=70.0
 )
 
-canvas.create_text(
-    27.0,
-    164.0,
-    anchor="nw",
-    text="Додаток спрямований до",
-    fill="#FFFFFF",
-    font=("Inter Bold", 14 * -1)
+button_image_9 = PhotoImage(
+    file=relative_to_assets("button_9.png"))
+button_9 = Button(
+    image=button_image_9,
+    borderwidth=0,
+    highlightthickness=0,
+    command=button9_click,
+    relief="flat"
+)
+button_9.place(
+    x=666.0,
+    y=114.0,
+    width=258.0,
+    height=70.0
 )
 
-canvas.create_text(
-    27.0,
-    181.0,
-    anchor="nw",
-    text="помогти людям з вадами",
-    fill="#FFFFFF",
-    font=("Inter Bold", 14 * -1)
+button_image_10 = PhotoImage(
+    file=relative_to_assets("button_10.png"))
+button_10 = Button(
+    image=button_image_10,
+    borderwidth=0,
+    highlightthickness=0,
+    command=button10_click,
+    relief="flat"
 )
-
-canvas.create_text(
-    27.0,
-    198.0,
-    anchor="nw",
-    text="слуху взямодія із зовнішім",
-    fill="#FFFFFF",
-    font=("Inter Bold", 14 * -1)
-)
-
-canvas.create_text(
-    27.0,
-    215.0,
-    anchor="nw",
-    text="світом",
-    fill="#FFFFFF",
-    font=("Inter Bold", 14 * -1)
-)
-
-canvas.create_text(
-    269.0,
-    207.0,
-    anchor="nw",
-    text="Перенавчання додатку під конкретного",
-    fill="#2A87DE",
-    font=("Inter Bold", 14 * -1)
-)
-
-canvas.create_text(
-    269.0,
-    228.0,
-    anchor="nw",
-    text="користувача.",
-    fill="#2A87DE",
-    font=("Inter Bold", 14 * -1)
+button_10.place(
+    x=827.0,
+    y=203.0,
+    width=258.0,
+    height=70.0
 )
 window.resizable(False, False)
 window.mainloop()
