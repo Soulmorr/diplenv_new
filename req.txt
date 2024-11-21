@@ -1,0 +1,13 @@
+numpy
+scikit-learn
+opencv-python
+pyttsx3
+mediapipe
+selenium
+nltk
+ffpyplayer
+pillow
+ffmpy
+matplotlib
+tk
+requests
